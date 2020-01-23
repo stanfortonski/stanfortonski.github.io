@@ -1,7 +1,6 @@
 precision mediump float;
 
 varying vec3 normal;
-varying vec2 texCoords;
 varying vec3 fragPos;
 
 struct Material
@@ -10,7 +9,6 @@ struct Material
   vec3 diffuse;
   vec3 specular;
   float shininess;
-  int isSupportTex;
 };
 
 struct PointLight
@@ -25,7 +23,6 @@ struct PointLight
 };
 
 uniform Material material;
-uniform sampler2D texUnit;
 uniform vec3 viewPos;
 
 vec3 calcPointLight(PointLight light, Material material, vec3 viewDir, vec3 normal, float shadow)
