@@ -15,7 +15,7 @@ Engine.Camera = function(){
   this.pitch = -30;
   this.yaw = 90;
   this.speed = 0.01;
-  this.sensitivity = 0.08;
+  this.sensitivity = 0.04;
   this.updateVectors();
 }
 
