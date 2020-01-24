@@ -99,7 +99,7 @@ var App = {
       }
     }
     else{
-      this.camera.sensitivity = 0.002;
+      this.camera.sensitivity = 0.005;
       function touchStartMovement(e){
         x = e.touches[0].clientX;
         y = e.touches[0].clientY;
