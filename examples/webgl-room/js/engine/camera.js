@@ -1,6 +1,6 @@
 Engine.Camera = function(){
   this.position = glMatrix.vec3.create();
-  glMatrix.vec3.set(this.position, -0.5, 0.5, -0.5);
+  glMatrix.vec3.set(this.position, 0, 0.6, 0);
 
   this.direction = glMatrix.vec3.create();
   glMatrix.vec3.set(this.direction, 0, 0, 1);
@@ -12,8 +12,8 @@ Engine.Camera = function(){
   glMatrix.vec3.set(this.worldUp, 0, 1, 0);
 
   this.right = glMatrix.vec3.create();
-  this.pitch = -30;
-  this.yaw = 90;
+  this.pitch = -35;
+  this.yaw = 270;
   this.speed = 0.01;
   this.sensitivity = 0.04;
   this.updateVectors();

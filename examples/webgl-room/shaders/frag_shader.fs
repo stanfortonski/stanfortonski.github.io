@@ -24,6 +24,21 @@ struct PointLight
 
 uniform Material material;
 uniform vec3 viewPos;
+uniform vec3 lightPos;
+uniform vec3 lightColor;
+uniform vec2 clipNearFar;
+uniform samplerCube depthMap;
+
+float shadowCalculation(samplerCube shadowMap, vec3 lightPos)
+{
+  vec3 lightToFrag = fragPos - lightPos;
+  float closestDepth = textureCube(shadowMap, lightToFrag).r;
+  closestDepth *= clipNearFar.y;
+  float currentDepth = length(lightToFrag);
+  float bias = 0.16;
+  float shadow = currentDepth - bias > closestDepth ? 1.0 : 0.0;
+  return shadow;
+}
 
 vec3 calcPointLight(PointLight light, Material material, vec3 viewDir, vec3 normal, float shadow)
 {
@@ -31,15 +46,15 @@ vec3 calcPointLight(PointLight light, Material material, vec3 viewDir, vec3 norm
 
   float diff = max(dot(normal, lightDir), 0.0);
   vec3 halfwayDir = normalize(lightDir + viewDir);
-  float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess);
+  float spec = pow(max(dot(normal, halfwayDir), 0.0), material.shininess*0.2);
 
   float distances = length(light.position - fragPos);
   float weakening = 1.0 / (light.constant + light.linear * distances + light.quadratic * pow(distances, 2.0));
 
-  vec3 ambient = light.ambient * material.ambient * weakening;
-  vec3 diffuse = light.diffuse * diff * weakening * material.diffuse;
-  vec3 specular = light.specular * spec * weakening * material.specular;
-  return ambient + diffuse + specular; //(ambient + (1.0 - shadow) * (diffuse + specular)) * (material.diffuse + material.specular);
+  vec3 ambient = light.ambient * material.ambient;
+  vec3 diffuse = light.diffuse * diff * weakening;
+  vec3 specular = light.specular * spec * weakening;
+  return (ambient + (1.0 - shadow) * (diffuse + specular)) * (material.diffuse + material.specular);
 }
 
 void main()
@@ -48,14 +63,15 @@ void main()
   vec3 viewDir = normalize(viewPos - fragPos);
 
   PointLight light;
-  light.position = vec3(0.011, 1.959, 0.003);
-  light.ambient = vec3(0.09);
-  light.diffuse = vec3(1.1);
-  light.specular = vec3(1.0);
+  light.position = lightPos;
+  light.ambient = vec3(0.15);
+  light.diffuse = lightColor;
+  light.specular = vec3(0.1);
   light.constant = 1.0;
-  light.linear = 0.01;
-  light.quadratic = 0.01;
+  light.linear = 0.001;
+  light.quadratic = 0.001;
 
-  vec3 result = calcPointLight(light, material, viewDir, norm, 0.0);
+  float shadowVal = shadowCalculation(depthMap, light.position);
+  vec3 result = calcPointLight(light, material, viewDir, norm, shadowVal);
   gl_FragColor = vec4(result, 1.0);
 }

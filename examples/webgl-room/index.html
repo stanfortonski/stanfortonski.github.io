@@ -11,7 +11,27 @@
   <link rel="shortcut icon" href="https://stanfortonski.dev/img/favicon.ico">
 </head>
 <body>
-  <a class="back" href="https://stanfortonski.dev" target="_blank" rel="nofollow">Back to stanfortonski.dev</a>
+  <aside class="menu left">
+    <a href="https://stanfortonski.dev" target="_blank" rel="nofollow">Back to stanfortonski.dev</a>
+  </aside>
+
+  <aside class="menu right">
+    <div>
+      <input type="range" id="red" min="0" max="100" value="75">
+      <label>Red</label>
+    </div>
+
+    <div>
+      <input type="range" id="green" min="0" max="100" value="75">
+      <label>Green</label>
+    </div>
+
+    <div>
+      <input type="range" id="blue" min="0" max="100" value="75">
+      <label>Blue</label>
+    </div>
+  </aside>
+
   <canvas id="canvas" width="800" height="600"></canvas>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -22,6 +42,8 @@
   <script src="js/engine/model.js"></script>
   <script src="js/engine/camera.js"></script>
   <script src="js/app.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/loading.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
