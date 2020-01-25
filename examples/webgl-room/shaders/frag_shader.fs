@@ -28,15 +28,80 @@ uniform vec3 lightPos;
 uniform vec3 lightColor;
 uniform vec2 clipNearFar;
 uniform samplerCube depthMap;
+uniform int shadowSamples;
 
 float shadowCalculation(samplerCube shadowMap, vec3 lightPos)
 {
   vec3 lightToFrag = fragPos - lightPos;
-  float closestDepth = textureCube(shadowMap, lightToFrag).r;
-  closestDepth *= clipNearFar.y;
   float currentDepth = length(lightToFrag);
-  float bias = 0.16;
-  float shadow = currentDepth - bias > closestDepth ? 1.0 : 0.0;
+  float bias = 0.18;
+  float shadow = 0.0;
+  const float offset = 0.012;
+
+  //Because WEBGL es 1.0 do not support uses not const in loops
+  if (shadowSamples == 1)
+  {
+    float closestDepth = textureCube(shadowMap, lightToFrag).r;
+    closestDepth *= clipNearFar.y;
+    shadow = currentDepth - bias > closestDepth ? 1.0 : 0.0;
+  }
+  else if (shadowSamples == 2)
+  {
+    const int samples = 2;
+    const float nextStep = (offset / float(samples)) * 2.0;
+    for (float x = -offset; x < offset; x += nextStep)
+    {
+      for (float y = -offset; y < offset; y += nextStep)
+      {
+        for (float z = -offset; z < offset; z += nextStep)
+        {
+          float closestDepth = textureCube(depthMap, lightToFrag + vec3(x, y, z)).r;
+          closestDepth *= clipNearFar.y;
+          if (currentDepth - bias > closestDepth)
+            shadow += 1.0;
+        }
+      }
+    }
+    shadow /= float(samples * samples * samples);
+  }
+  else if (shadowSamples == 3)
+  {
+    const int samples = 3;
+    const float nextStep = (offset / float(samples)) * 2.0;
+    for (float x = -offset; x < offset; x += nextStep)
+    {
+      for (float y = -offset; y < offset; y += nextStep)
+      {
+        for (float z = -offset; z < offset; z += nextStep)
+        {
+          float closestDepth = textureCube(depthMap, lightToFrag + vec3(x, y, z)).r;
+          closestDepth *= clipNearFar.y;
+          if (currentDepth - bias > closestDepth)
+            shadow += 1.0;
+        }
+      }
+    }
+    shadow /= float(samples * samples * samples);
+  }
+  else if (shadowSamples == 4)
+  {
+    const int samples = 4;
+    const float nextStep = (offset / float(samples)) * 2.0;
+    for (float x = -offset; x < offset; x += nextStep)
+    {
+      for (float y = -offset; y < offset; y += nextStep)
+      {
+        for (float z = -offset; z < offset; z += nextStep)
+        {
+          float closestDepth = textureCube(depthMap, lightToFrag + vec3(x, y, z)).r;
+          closestDepth *= clipNearFar.y;
+          if (currentDepth - bias > closestDepth)
+            shadow += 1.0;
+        }
+      }
+    }
+    shadow /= float(samples * samples * samples);
+  }
   return shadow;
 }
 

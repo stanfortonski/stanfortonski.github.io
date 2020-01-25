@@ -53,6 +53,10 @@ App.events = {
   },
 
   initSliders: function(){
+    $('input[type=range]').on('input', function(){
+      $(this).trigger('change');
+    });
+
     $('#red').change(function(){
       App.lightColor[0] = parseFloat($(this).val()/100);
     });
@@ -63,6 +67,10 @@ App.events = {
 
     $('#blue').change(function(){
       App.lightColor[2] = parseFloat($(this).val()/100);
+    });
+
+    $('#shadows').change(function(){
+      App.config.shadowSamples = parseInt($(this).val());
     });
   }
 };

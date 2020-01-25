@@ -12,7 +12,8 @@ var App = {
 	config:{
 		projection: glm.mat4.create(),
 		clipNearFar: [0.05, 20],
-		shadowResolution: 1024
+		shadowResolution: 1024,
+		shadowSamples: 1,
 	},
 
 	initWindowSize: function(){
@@ -31,8 +32,11 @@ var App = {
   },
 
   initApp: function(){
-		if (!isMobile)
+		if (!isMobile){
 			this.config.shadowResolution = 2048;
+			this.config.shadowSamples = 2;
+			$('#shadows').val(2);
+		}
 
 		this.initGL();
 		this.initWindowSize();

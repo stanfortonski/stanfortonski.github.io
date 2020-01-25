@@ -21,7 +21,8 @@ App.main = function(){
       clipNearFar: gl.getUniformLocation(App.program, 'clipNearFar'),
       depthMap: gl.getUniformLocation(App.program, 'depthMap'),
       lightColor: gl.getUniformLocation(App.program, 'lightColor'),
-      lightPos: gl.getUniformLocation(App.program, 'lightPos')
+      lightPos: gl.getUniformLocation(App.program, 'lightPos'),
+      shadowSamples: gl.getUniformLocation(App.program, 'shadowSamples'),
     },
 
     depthProgram: {
@@ -59,6 +60,7 @@ App.renderScene = function(){
   gl.uniform2fv(App.uniforms.program.clipNearFar, App.config.clipNearFar);
   gl.uniform3fv(App.uniforms.program.lightColor, App.lightColor);
   gl.uniform3fv(App.uniforms.program.lightPos, App.lightPos);
+  gl.uniform1i(App.uniforms.program.shadowSamples, App.config.shadowSamples);
   gl.uniform1i(App.uniforms.program.depthMap, 0);
   gl.activeTexture(gl.TEXTURE0);
   gl.bindTexture(gl.TEXTURE_CUBE_MAP, App.cubeMap);

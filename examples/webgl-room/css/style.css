@@ -6,6 +6,8 @@ body{
 }
 
 *{
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   border: 0;
   padding: 0;
   margin: 0;
@@ -21,17 +23,18 @@ body{
 .menu{
   position: fixed;
   top: 0;
+  width: 100%;
   z-index: 9999;
   padding: .5em;
   color: #fff;
 }
 
-.menu.right{
-  right: 0;
+.menu .right{
+  float: right;
 }
 
-.menu.left{
-  left: 0;
+.menu .left{
+  float: left;
 }
 
 .menu a{
