@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 App.loading = {
   loaded:{},
   totalLoaded: 0,

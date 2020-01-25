@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 precision mediump float;
 
 varying vec3 normal;
@@ -38,7 +40,7 @@ float shadowCalculation(samplerCube shadowMap, vec3 lightPos)
   float shadow = 0.0;
   const float offset = 0.012;
 
-  //Because WEBGL es 1.0 do not support uses not const in loops
+  //Because WebGL es 1.0 do not support using not const vars in loops
   if (shadowSamples == 1)
   {
     float closestDepth = textureCube(shadowMap, lightToFrag).r;

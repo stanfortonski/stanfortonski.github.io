@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 glm = glMatrix;
 var gl, isMobile = (function(){
 	let check = false;

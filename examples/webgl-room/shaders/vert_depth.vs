@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 precision mediump float;
 
 attribute vec3 aPos;

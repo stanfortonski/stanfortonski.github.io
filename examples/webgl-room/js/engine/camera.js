@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 Engine.Camera = function(){
   this.position = glMatrix.vec3.create();
   glMatrix.vec3.set(this.position, 0, 0.6, 0);

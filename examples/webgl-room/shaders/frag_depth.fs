@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 precision mediump float;
 
 uniform vec2 clipNearFar;

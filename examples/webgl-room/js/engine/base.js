@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 var Engine = {};
 Engine.createShader = function(gl, type, source){
   let shader = gl.createShader(type);

@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 Engine.Model = function(gl, assimp){
   this.meshes = [];
   this.init(gl, assimp.meshes, assimp.materials);

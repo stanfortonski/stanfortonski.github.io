@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 Engine.Mesh = function(gl, vertices, indices, normals, material){
   this.vertices = vertices;
   this.normals = normals;

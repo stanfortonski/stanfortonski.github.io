@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 Engine.Material = function(gl, assimpMaterial){
   this.shininess = assimpMaterial[5].value;
   this.ambient = glMatrix.vec3.create();

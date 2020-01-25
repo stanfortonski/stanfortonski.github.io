@@ -1,3 +1,5 @@
+/* Copyright (c) 2020 by Stan Fortoński*/
+
 App.events = {
   initMouseMovement: function(){
     var x = 1, y = 1, lastPosX, lastPosY, firstTime = true;

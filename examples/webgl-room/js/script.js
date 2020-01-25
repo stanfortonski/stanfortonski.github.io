@@ -1,3 +1,5 @@
+/* Copyright (c) 2019-2020 by Stan Fortoński*/
+
 App.main = function(){
   var vertShader = Engine.createShader(gl, gl.VERTEX_SHADER, App.loading.loaded.vertexShaderSource),
   fragShader = Engine.createShader(gl, gl.FRAGMENT_SHADER, App.loading.loaded.fragmentShaderSource),
