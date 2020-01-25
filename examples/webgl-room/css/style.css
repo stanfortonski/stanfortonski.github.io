@@ -27,15 +27,16 @@ body{
   top: 0;
   width: 100%;
   z-index: 9999;
-  padding: .5em;
   color: #fff;
 }
 
 .menu .right{
+  padding: .5em;
   float: right;
 }
 
 .menu .left{
+  padding: .5em;
   float: left;
 }
 
