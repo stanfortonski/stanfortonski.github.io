@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/examples/react-posts-searcher/static/css/main.efaa1d49.chunk.css",
+    "main.js": "/examples/react-posts-searcher/static/js/main.5e8d8314.chunk.js",
+    "main.js.map": "/examples/react-posts-searcher/static/js/main.5e8d8314.chunk.js.map",
+    "runtime-main.js": "/examples/react-posts-searcher/static/js/runtime-main.dd42c397.js",
+    "runtime-main.js.map": "/examples/react-posts-searcher/static/js/runtime-main.dd42c397.js.map",
+    "static/js/2.d0532883.chunk.js": "/examples/react-posts-searcher/static/js/2.d0532883.chunk.js",
+    "static/js/2.d0532883.chunk.js.map": "/examples/react-posts-searcher/static/js/2.d0532883.chunk.js.map",
+    "index.html": "/examples/react-posts-searcher/index.html",
+    "precache-manifest.c83791374dc4c158377f2b3249336f8d.js": "/examples/react-posts-searcher/precache-manifest.c83791374dc4c158377f2b3249336f8d.js",
+    "service-worker.js": "/examples/react-posts-searcher/service-worker.js",
+    "static/css/main.efaa1d49.chunk.css.map": "/examples/react-posts-searcher/static/css/main.efaa1d49.chunk.css.map",
+    "static/js/2.d0532883.chunk.js.LICENSE.txt": "/examples/react-posts-searcher/static/js/2.d0532883.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.dd42c397.js",
+    "static/js/2.d0532883.chunk.js",
+    "static/css/main.efaa1d49.chunk.css",
+    "static/js/main.5e8d8314.chunk.js"
+  ]
+}
